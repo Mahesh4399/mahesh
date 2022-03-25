@@ -1,0 +1,29 @@
+
+google drive link
+https://drive.google.com/drive/folders/1trgl1HeaFIfF0WREyg0QcKEP3Jbii5jy?usp=sharing
+
+BOTO3
+https://boto3.amazonaws.com/v1/documentation/api/latest/index.html
+
+
+Things to get more knowledge on AWS
+https://aws.amazon.com/getting-started/hands-on/?awsf.getting-started-content-type=content-type%23hands-on&?pg=gs&sec=lyfa&getting-started-all.sort-by=item.additionalFields.sortOrder&getting-started-all.sort-order=asc&awsf.getting-started-category=*all&awsf.getting-started-level=*all
+Analytics 
+compute 
+databases
+storage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

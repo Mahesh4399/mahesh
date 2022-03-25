@@ -1,0 +1,24 @@
+AWS
+==============
+
+Google drive link for AWS
+https://drive.google.com/drive/folders/1trgl1HeaFIfF0WREyg0QcKEP3Jbii5jy?usp=sharing
+
+
+create a virtual machine
+=======================================================================================
+1. Type ec2 on search box and go to the dashboard'
+2. Click on Launch Instance > Launch Instance > Amazon Linux 2 AMI (HVM), SSD Volume Type > t2.micro > Launch > Create a new Key Pair (Download the KeyPair and Save it to reuse the same for connecting to the machine) > Launch Instance
+3. Go to EC2 Dashboard > Instances . Ensure the instance is in running state and then select the instance and click on Connect > EC Instant Connect.
+
+========================================================================================
+Assignments google link foir all the AWS:
+https://drive.google.com/drive/folders/1_eBLtHamFxI2rYTVl3DD_OSdr4qJ8Oa3
+
+
+
+
+
+
+
+

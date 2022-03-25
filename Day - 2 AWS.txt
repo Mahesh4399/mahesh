@@ -1,0 +1,96 @@
+Day - 2 AWS
+
+google drive link
+https://drive.google.com/drive/folders/1trgl1HeaFIfF0WREyg0QcKEP3Jbii5jy?usp=sharing
+
+
+
+
+
+
+
+
+from Prashant Nair (Trainer) to All Participants:
+Part1: Setting up Data Server that will emit realtime logs
+---------------------------------------------------------------
+
+
+1. Create a new EC2 instance, provide admin role and login the same via putty.
+
+
+2. Install AWS kinesis firehose agent in the data source machine
+    
+sudo yum install -y aws-kinesis-agent
+
+
+3. Install a dummy program that can generate dummy logs.
+wget https://raw.githubusercontent.com/prashantnair2050/AWSBigdataMat/main/LogGenerator.zip
+unzip LogGenerator.zip
+chmod a+x LogGenerator.py
+ls
+This programs generates realtime stream of logs and store the same in the folder /var/log/cadabra
+
+
+4. Create necessary folders
+sudo mkdir /var/log/cadabra
+
+
+
+Part2: Setup Kinesis Delivery Stream named CadabraOrders in Kinesis Firehose. This stream wwill get the data from Agent and store the same in S3
+-----------------------------------------------------------------------------------------------
+5. Create Kinesis Data Firehose Delivery Stream
+    a. On the search bar type "kinesis" and click on Kinesis
+    b. Click on/Select Kinesis Data Firehose > Create Delivery Stream
+    c. Select Source as Direct PUT and Destination as Amazon S3
+    d. Set the delivery stream name as "CadabraOrders"
+    e. Go to Destination Settings > Click on Create (to create a bucket). Once bucket is created go back to Kinesis tab and click on Browse > Select relevant bucket and click on Choose.
+    f. Once done scroll down and click on "Create delivery Stream"
+
+
+=============================================================================
+6. Configure the Kinesis Firehose Agent to get the realtime streams from /var/log/cadabra and store the same in my AWS Kinesis delivery stream object. Go to Putty and perform the following
+    a. cd /etc/aws-kinesis/           sudo vi /etc/aws-kinesis/agent.json
+    b. vi agent.json
+{
+  "cloudwatch.emitMetrics": true,
+  "kinesis.endpoint": "",
+  "firehose.endpoint": "firehose.us-east-1.amazonaws.com",
+  "flows": [
+    {
+      "filePattern": "/var/log/cadabra/*.log",
+      "deliveryStream": "CadabraLogs"
+    }
+  ]
+}
+7. Start the agent
+sudo service aws-kinesis-agent stop
+sudo service aws-kinesis-agent start
+cd\
+
+
+
+8. Emit some logs
+sudo ./LogGenerator.py 100000
+To check the status of the agent, create a duplicate session in Putty(Open a new session in pUtty for EC2 instance) and type the following command
+tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log
+Check teh S3 bucket to verify whether data is stored successfully or not !!!
+
+
+
+========================================================
+Basic Linux Command 
+sudo ---- Get admin access
+Inside vi
+ :wq ---> Save the file and quit
+ :q! ---> Quit the file without saving anything
+ I -----> Activate insert mode for typing
+ ESC ---> To escape any active command
+===========================================================
+
+
+
+
+
+
+
+
